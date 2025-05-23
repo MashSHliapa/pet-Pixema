@@ -76,3 +76,13 @@ body {
     }
   }
 }
+
+._container {
+  max-width: 1214px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @include breakpoint(lg) {
+    max-width: 958px;
+  }
+}
