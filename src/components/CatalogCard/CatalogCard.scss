@@ -1,0 +1,82 @@
+@use '../Layout/Layout.scss' as layout;
+
+.catalog-card {
+  &__body {
+    max-width: 266px;
+    min-height: 458px;
+
+    @include layout.breakpoint(lg) {
+      max-width: 208px;
+      min-height: 405px;
+    }
+
+    @include layout.breakpoint(xs) {
+      max-width: 272px;
+      min-height: 100%;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+  }
+
+  &__image {
+    height: 357px;
+
+    @include layout.breakpoint(lg) {
+      height: 279px;
+    }
+
+    @include layout.breakpoint(xs) {
+      height: 366px;
+    }
+  }
+
+  &__image img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  &__year {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-flex;
+    background-color: #00a340;
+    border-radius: 6px;
+    padding: 2px 8px;
+  }
+
+  &__title {
+    font-weight: 700;
+    margin: 24px 0 4px;
+
+    @include layout.breakpoint(xs) {
+      margin: 20px 0 4px;
+    }
+  }
+
+  &__types {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__type {
+    position: relative;
+    color: #afb2b6;
+  }
+
+  &__type:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: #afb2b6;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    margin-left: -12px;
+  }
+}
