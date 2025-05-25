@@ -2,16 +2,16 @@
 
 .catalog-card {
   &__body {
-    max-width: 266px;
+    width: 266px;
     min-height: 458px;
 
     @include layout.breakpoint(lg) {
-      max-width: 208px;
+      width: 208px;
       min-height: 405px;
     }
 
     @include layout.breakpoint(xs) {
-      max-width: 272px;
+      width: 272px;
       min-height: 100%;
     }
   }

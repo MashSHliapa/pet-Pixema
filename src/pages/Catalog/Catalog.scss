@@ -1,0 +1,15 @@
+@use '../../components/Layout/Layout.scss' as layout;
+
+.catalog {
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    row-gap: 40px;
+
+    @include layout.breakpoint(lg) {
+      column-gap: 30px;
+    }
+  }
+}
