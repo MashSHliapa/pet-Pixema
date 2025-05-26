@@ -1,15 +1,41 @@
 @use '../../components/Layout/Layout.scss' as layout;
 
 .catalog {
+  &__body {
+    padding: 16px 0 64px;
+
+    @include layout.breakpoint(lg) {
+      padding: 16px 0 56px;
+    }
+
+    @include layout.breakpoint(md) {
+      padding: 16px 0 48px;
+    }
+  }
+
   &__cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 40px;
+    column-gap: 30px;
     row-gap: 40px;
 
+    @include layout.breakpoint(md) {
+      column-gap: 40px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  &__button {
+    margin-top: 64px;
+
     @include layout.breakpoint(lg) {
-      column-gap: 30px;
+      margin-top: 56px;
+    }
+
+    @include layout.breakpoint(md) {
+      margin-top: 48px;
     }
   }
 }

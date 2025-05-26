@@ -1,0 +1,21 @@
+@use '../Layout/Layout.scss' as layout;
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__spinner {
+    border-color: #7b61ff;
+    border-style: solid;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
