@@ -1,6 +1,8 @@
 @use '../../components/Layout/Layout.scss' as layout;
 
 .catalog {
+  position: relative;
+
   &__body {
     padding: 16px 0 64px;
 
@@ -37,5 +39,18 @@
     @include layout.breakpoint(md) {
       margin-top: 48px;
     }
+  }
+
+  &__loading .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__loading .loading__spinner {
+    border-width: 4px;
+    width: 50px;
+    height: 50px;
   }
 }

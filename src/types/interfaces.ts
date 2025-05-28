@@ -5,3 +5,9 @@ export interface PostData {
   imdbID: string;
   Type: string;
 }
+
+export interface DataResponse {
+  loading: boolean;
+  error: null | string;
+  data: PostData[];
+}
