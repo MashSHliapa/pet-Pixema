@@ -1,0 +1,146 @@
+@use '../../components/Layout/Layout.scss' as layout;
+
+.item-card {
+  &__body {
+    display: flex;
+    gap: 42px;
+    padding: 16px 0 50px;
+
+    @include layout.breakpoint(sm) {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+
+  &__info-mobile {
+    display: none;
+
+    @include layout.breakpoint(sm) {
+      display: block;
+    }
+  }
+
+  &__data-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include layout.breakpoint(sm) {
+      gap: 24px;
+      width: 273px;
+    }
+  }
+
+  &__poster {
+    width: 266px;
+    height: 356px;
+
+    @include layout.breakpoint(md) {
+      width: 208px;
+      height: 278px;
+    }
+
+    @include layout.breakpoint(sm) {
+      width: 272px;
+      height: 364px;
+    }
+  }
+
+  &__info {
+    @include layout.breakpoint(sm) {
+      display: none;
+    }
+  }
+
+  &__genre-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__ratings-runtime {
+    margin-top: 24px;
+
+    @include layout.breakpoint(sm) {
+      margin-top: 20px;
+    }
+  }
+
+  &__plot {
+    margin: 40px 0;
+
+    @include layout.breakpoint(sm) {
+      margin: 0 0 30px 0;
+    }
+  }
+
+  &__characteristics > :not(:last-child) {
+    margin-bottom: 20px;
+
+    @include layout.breakpoint(sm) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 54px;
+
+    @include layout.breakpoint(sm) {
+      gap: 66px;
+    }
+  }
+
+  &__label {
+    color: #afb2b6;
+    min-width: 85px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #323537;
+
+  & > :not(:last-child) {
+    border-right: 1px solid #000000;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.ratings-runtime {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background-color: #323537;
+    min-height: 28px;
+    padding: 2px 8px;
+  }
+
+  &__image {
+    display: flex;
+  }
+
+  &__icon_green {
+    background-color: #00a340;
+  }
+}

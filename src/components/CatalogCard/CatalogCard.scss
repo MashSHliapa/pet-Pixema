@@ -16,11 +16,11 @@
     }
   }
 
-  &__image-wrapper {
+  &__poster-wrapper {
     position: relative;
   }
 
-  &__image {
+  &__poster {
     height: 357px;
 
     @include layout.breakpoint(lg) {
@@ -30,13 +30,6 @@
     @include layout.breakpoint(xs) {
       height: 366px;
     }
-  }
-
-  &__image img {
-    border-radius: 20px;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
   }
 
   &__year {
@@ -58,25 +51,8 @@
     }
   }
 
-  &__types {
+  &__genres {
     display: flex;
     gap: 20px;
-  }
-
-  &__type {
-    position: relative;
-    color: #afb2b6;
-  }
-
-  &__type:not(:first-child)::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    background-color: #afb2b6;
-    border-radius: 50%;
-    width: 4px;
-    height: 4px;
-    margin-left: -12px;
   }
 }

@@ -5,17 +5,17 @@ export function CatalogCard(props: { post: PostData }) {
   return (
     <div className="catalog-card">
       <div className="catalog-card__body">
-        <div className="catalog-card__image-wrapper">
-          <div className="catalog-card__image">
+        <div className="catalog-card__poster-wrapper">
+          <div className="catalog-card__poster poster">
             <img src={props.post.Poster} alt="image" />
           </div>
           <div className="catalog-card__year">{props.post.Year}</div>
         </div>
         <h3 className="catalog-card__title">{props.post.Title}</h3>
-        <div className="catalog-card__types">
-          <h3 className="catalog-card__type">{props.post.Type}</h3>
-          <h3 className="catalog-card__type">{props.post.Type}</h3>
-        </div>
+        <ul className="catalog-card__genres">
+          <li className="catalog-card__genre genre-style">{props.post.Type}</li>
+          <li className="catalog-card__genre genre-style">{props.post.Type}</li>
+        </ul>
       </div>
     </div>
   );
