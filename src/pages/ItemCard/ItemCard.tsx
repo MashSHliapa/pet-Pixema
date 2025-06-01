@@ -1,24 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import type { Action, ThunkDispatch } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
-import type { ICardItem } from '../../types/interfaces';
+import { fetchItemCard } from '../../redux/itemCardSlice';
+import { Loading } from '../../components/Loading/Loading';
+import type { RootState } from '../../redux/store';
+import type { DataItemCardResponse } from '../../types/interfaces';
 import imdb from '../../assets/icons/imdb.svg';
 import favorite from '../../assets/icons/favorite.svg';
 import send from '../../assets/icons/send.svg';
 import './ItemCard.scss';
 
 export function ItemCard() {
-  const [post, setPost] = useState<Partial<ICardItem>>({});
-
   const { imdbID } = useParams<string>();
+  const dispatch = useDispatch<ThunkDispatch<DataItemCardResponse, null, Action>>();
+  const { data: post, loading, error } = useSelector((state: RootState) => state.itemCard);
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=b4d1a2cd`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPost(data);
-        console.log(data);
-      });
-  }, [imdbID]);
+    if (imdbID) {
+      dispatch(fetchItemCard({ imdbID }));
+    }
+  }, [dispatch, imdbID]);
+
+  if (loading) {
+    return (
+      <div className="catalog__loading">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-danger">{error}</div>;
+  }
 
   const genresArr = post.Genre?.split(',');
   const raiting = post.Ratings;

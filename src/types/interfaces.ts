@@ -6,7 +6,7 @@ export interface ICatalogCard {
   Type: string;
 }
 
-export interface DataResponse {
+export interface DataCatalogResponse {
   loading: boolean;
   error: null | string;
   data: ICatalogCard[];
@@ -35,4 +35,10 @@ export interface ICardItem {
 interface IRating {
   Source: string;
   Value: string;
+}
+
+export interface DataItemCardResponse {
+  loading: boolean;
+  error: null | string;
+  data: ICardItem;
 }

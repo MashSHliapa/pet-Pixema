@@ -6,12 +6,12 @@ import { ShowMoreButton } from '../../components/ShowMoreButton/ShowMoreButton';
 import { Loading } from '../../components/Loading/Loading';
 import { fetchCatalog } from '../../redux/catalogSlice';
 import type { RootState } from '../../redux/store';
-import type { DataResponse } from '../../types/interfaces';
+import type { DataCatalogResponse } from '../../types/interfaces';
 import './Catalog.scss';
 
 export function Catalog() {
   const [visibleCards, setVisibleCards] = useState(4);
-  const dispatch = useDispatch<ThunkDispatch<DataResponse, null, Action>>();
+  const dispatch = useDispatch<ThunkDispatch<DataCatalogResponse, null, Action>>();
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const prevVisibleCount = useRef(visibleCards);
 
