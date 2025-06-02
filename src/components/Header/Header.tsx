@@ -1,6 +1,6 @@
+import { Menu } from '../Menu/Menu';
 import logo from '../../assets/icons/logo.svg';
 import filter from '../../assets/icons/filter_icon.svg';
-import burger from '../../assets/icons/burger.svg';
 import './Header.scss';
 
 export function Header() {
@@ -19,11 +19,10 @@ export function Header() {
               </div>
             </form>
           </div>
-          <div className="header__burger">
-            <img src={burger} alt="burger" />
-          </div>
           <div className="header__user user">
-            <div className="user__icon">MS</div>
+            <div className="user__menu menu">
+              <Menu />
+            </div>
             <div className="user__name">Masha Shliapnikova</div>
           </div>
         </div>

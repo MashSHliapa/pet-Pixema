@@ -1,0 +1,24 @@
+.navbar {
+  &__list > :not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__item:hover svg path,
+  &__item:hover {
+    fill: #7b61ff;
+    color: #7b61ff;
+  }
+
+  &__icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

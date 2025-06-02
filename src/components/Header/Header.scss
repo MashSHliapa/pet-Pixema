@@ -15,16 +15,10 @@
   }
 
   &__logo {
+    position: relative;
+    z-index: 20;
     @include layout.breakpoint(sm) {
       max-width: 152px;
-    }
-  }
-
-  &__burger {
-    display: none;
-
-    @include layout.breakpoint(lg) {
-      display: block;
     }
   }
 }
@@ -87,25 +81,12 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 230px;
-
-  @include layout.breakpoint(lg) {
-    display: none;
-  }
-
-  &__icon {
-    flex: 0 0 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: #7b61ff;
-    border-radius: 10px;
-    height: 56px;
-  }
 
   &__name {
     font-weight: 600;
+
+    @include layout.breakpoint(lg) {
+      display: none;
+    }
   }
 }
