@@ -4,7 +4,7 @@ import type { Action, ThunkDispatch } from '@reduxjs/toolkit';
 import { CatalogCard } from '../../components/CatalogCard/CatalogCard';
 import { ShowMoreButton } from '../../components/ShowMoreButton/ShowMoreButton';
 import { Loading } from '../../components/Loading/Loading';
-import { fetchCatalog } from '../../redux/catalogSlice';
+import { clearSearchState, fetchCatalog } from '../../redux/catalogSlice';
 import type { RootState } from '../../redux/store';
 import type { DataCatalogResponse } from '../../types/interfaces';
 import './Catalog.scss';
@@ -18,6 +18,7 @@ export function Catalog() {
   const { data: posts, loading, error } = useSelector((state: RootState) => state.catalog);
 
   useEffect(() => {
+    dispatch(clearSearchState());
     dispatch(fetchCatalog());
   }, [dispatch]);
 

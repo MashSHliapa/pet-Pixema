@@ -23,60 +23,6 @@
   }
 }
 
-.search {
-  margin-left: auto;
-  margin-right: 40px;
-
-  @include layout.breakpoint(lg) {
-    margin-right: 30px;
-  }
-
-  @include layout.breakpoint(sm) {
-    margin-right: 20px;
-  }
-
-  @include layout.breakpoint(xs) {
-    flex: 0 1 100%;
-    order: 2;
-    margin-right: 0px;
-  }
-
-  &__form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    background-color: #323537;
-    border-radius: 10px;
-    width: 572px;
-    min-height: 56px;
-    padding: 16px 16px 16px 20px;
-
-    @include layout.breakpoint(lg) {
-      width: 600px;
-    }
-
-    @include layout.breakpoint(md) {
-      width: 360px;
-    }
-
-    @include layout.breakpoint(sm) {
-      width: 100%;
-    }
-  }
-
-  &__input {
-    outline: none;
-    background-color: #323537;
-    color: white;
-    font-size: 16px;
-  }
-
-  &__filter {
-    cursor: pointer;
-  }
-}
-
 .user {
   display: flex;
   align-items: center;
