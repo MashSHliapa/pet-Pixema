@@ -1,0 +1,169 @@
+@use '../Layout/Layout.scss' as layout;
+
+.filters {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  border-radius: 20px;
+  background-color: #242426;
+  max-width: 518px;
+
+  @include layout.breakpoint(xs) {
+    min-width: 100%;
+  }
+
+  &__body {
+    padding: 48px 40px;
+
+    @include layout.breakpoint(xs) {
+      padding: 32px 24px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+
+    @include layout.breakpoint(xs) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.form {
+  & > :not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: #80858b;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    color: #ffffff;
+    border-radius: 10px;
+    background-color: #323537;
+    width: 100%;
+    height: 56px;
+    padding: 16px 20px;
+  }
+
+  &__input_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input_small {
+    width: 46%;
+  }
+
+  &__input_select {
+    appearance: none;
+    background-image: url('../../assets/icons/select_sign.svg');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+  }
+
+  &__buttons-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 110px;
+
+    @include layout.breakpoint(xs) {
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 199px;
+    height: 56px;
+    background-color: #323537;
+    border-radius: 10px;
+
+    @include layout.breakpoint(xs) {
+      width: 100%;
+    }
+  }
+
+  &__button_active {
+    background-color: #7b61ff;
+  }
+}
+
+.option {
+  &__items-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: #80858b 1px solid;
+    margin-top: 8px;
+
+    @include layout.breakpoint(xs) {
+      max-width: 260px;
+    }
+
+    & > :not(:last-child) {
+      border-right: #80858b 1px solid;
+    }
+  }
+
+  &__default-button {
+    display: none;
+  }
+
+  &__new-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 219px;
+    height: 56px;
+
+    @include layout.breakpoint(xs) {
+      width: 130px;
+    }
+  }
+}
+
+.genre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-radius: 10px;
+  background-color: #323537;
+  padding: 16px 20px;
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #242426;
+    border-radius: 5px;
+    padding: 4px 8px;
+  }
+}
+
+.form * {
+  outline: none;
+}
