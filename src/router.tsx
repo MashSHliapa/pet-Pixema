@@ -5,6 +5,8 @@ import { ItemCard } from './pages/ItemCard/ItemCard';
 import { Favorites } from './pages/Favorites/Favorites';
 import { SearchForm } from './components/SearchForm/SearchForm';
 import { SearchResults } from './pages/SearchResults/SearchResults';
+import { Filters } from './components/Filters/Filters';
+import { FilteringResults } from './pages/FilteringResults/FilteringResults';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: '/search/:request',
         element: <SearchResults />,
+      },
+      {
+        path: '/filter/:request',
+        element: <FilteringResults />,
       },
     ],
   },

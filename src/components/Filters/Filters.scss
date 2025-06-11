@@ -8,6 +8,7 @@
   border-radius: 20px;
   background-color: #242426;
   max-width: 518px;
+  height: 100vh;
 
   @include layout.breakpoint(xs) {
     min-width: 100%;
@@ -15,6 +16,8 @@
 
   &__body {
     padding: 48px 40px;
+    height: 100%;
+    overflow-y: auto;
 
     @include layout.breakpoint(xs) {
       padding: 32px 24px;
@@ -35,6 +38,10 @@
   &__name {
     font-size: 24px;
     font-weight: 600;
+  }
+
+  &__close {
+    cursor: pointer;
   }
 }
 
@@ -99,14 +106,23 @@
     height: 56px;
     background-color: #323537;
     border-radius: 10px;
+    cursor: pointer;
 
     @include layout.breakpoint(xs) {
       width: 100%;
     }
   }
 
+  &__button_disable {
+    background-color: #242426;
+    color: #80858b;
+    border: #323537 2px solid;
+  }
+
   &__button_active {
     background-color: #7b61ff;
+    color: inherit;
+    font-size: inherit;
   }
 }
 

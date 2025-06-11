@@ -1,17 +1,64 @@
+import { useState, type ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import close from '../../assets/icons/filter_close.svg';
 import './Filters.scss';
-export function Filters() {
+
+export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolean) => void }) {
+  const [request, setRequest] = useState('');
+  const [isBtnSort, setIsBtnSort] = useState(false);
+  const [yearFrom, setYearFrom] = useState('');
+  const [yearTo, setYearTo] = useState('');
+
+  const navigate = useNavigate();
+
+  function handleClickCloseFilters() {
+    setIsOpenFilters(false);
+  }
+
+  function handleClickEnterRequest(event: ChangeEvent<HTMLInputElement>) {
+    setRequest(event.target.value);
+  }
+
+  function handleToggleSortByYear() {
+    setIsBtnSort(!isBtnSort);
+  }
+
+  function handleSubmitForm(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (request.trim()) {
+      navigate(`/filter/${encodeURIComponent(request.trim())}`, {
+        state: {
+          isBtnSort,
+          yearFrom: yearFrom.trim() ? Number(yearFrom) : null,
+          yearTo: yearTo.trim() ? Number(yearTo) : null,
+        },
+      });
+      setIsOpenFilters(false);
+    }
+  }
+
   return (
     <div className="filters">
       <div className="filters__body">
         <div className="filters__header">
           <h3 className="filters__name">Filters</h3>
-          <div className="filters__close">
+          <div className="filters__close" onClick={handleClickCloseFilters}>
             <img src={close} alt="close" />
           </div>
         </div>
-        <form action="#" className="filters__form form">
-          <div className="form__option option">
+        <form action="#" className="filters__form form" onSubmit={handleSubmitForm}>
+          <div className="form__item">
+            <label htmlFor="" className="form__label">
+              Sort by
+            </label>
+            <div
+              className={`${isBtnSort ? 'form__button' : 'form__button form__button_disable'}`}
+              onClick={handleToggleSortByYear}
+            >
+              Year
+            </div>
+          </div>
+          {/* <div className="form__option option">
             <label htmlFor="" className="option__label">
               Sort by
             </label>
@@ -25,17 +72,23 @@ export function Filters() {
                 <span className="option__new-button">Year</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="form__separator"></div>
 
           <div className="form__item">
             <label htmlFor="" className="form__label">
               Full or short movie name
             </label>
-            <input type="text" className="form__input" placeholder="Your text" />
+            <input
+              type="text"
+              className="form__input"
+              placeholder="Your text"
+              value={request}
+              onChange={handleClickEnterRequest}
+            />
           </div>
 
-          <div className="form__genre genre">
+          {/* <div className="form__genre genre">
             <div className="genre__tag">
               <p className="genre__text">Adventure</p>
               <div className="genre__btn">
@@ -54,19 +107,31 @@ export function Filters() {
                 <img src={close} alt="close" />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="form__item">
             <label htmlFor="" className="form__label">
               Years
             </label>
             <div className="form__input_wrapper">
-              <input type="text" className="form__input form__input_small" placeholder="From" />
-              <input type="text" className="form__input form__input_small" placeholder="To" />
+              <input
+                type="text"
+                className="form__input form__input_small"
+                placeholder="From"
+                value={yearFrom}
+                onChange={(e) => setYearFrom(e.target.value)}
+              />
+              <input
+                type="text"
+                className="form__input form__input_small"
+                placeholder="To"
+                value={yearTo}
+                onChange={(e) => setYearTo(e.target.value)}
+              />
             </div>
           </div>
 
-          <div className="form__item">
+          {/* <div className="form__item">
             <label htmlFor="" className="form__label">
               Rating
             </label>
@@ -74,9 +139,9 @@ export function Filters() {
               <input type="text" className="form__input form__input_small" placeholder="From" />
               <input type="text" className="form__input form__input_small" placeholder="To" />
             </div>
-          </div>
+          </div> */}
 
-          <div className="form__item">
+          {/* <div className="form__item">
             <label htmlFor="" className="form__label">
               Country
             </label>
@@ -85,10 +150,12 @@ export function Filters() {
               <option value="1">United States</option>
               <option value="2">United Kingdom</option>
             </select>
-          </div>
+          </div> */}
           <div className="form__buttons-group">
             <div className="form__button">Clear filter</div>
-            <div className="form__button form__button_active">Show results</div>
+            <button type="submit" className="form__button form__button_active">
+              Show results
+            </button>
           </div>
         </form>
       </div>
