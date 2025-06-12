@@ -41,18 +41,18 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
     <div className="filters">
       <div className="filters__body">
         <div className="filters__header">
-          <h3 className="filters__name">Filters</h3>
+          <h3 className="filters__title title">Filters</h3>
           <div className="filters__close" onClick={handleClickCloseFilters}>
             <img src={close} alt="close" />
           </div>
         </div>
         <form action="#" className="filters__form form" onSubmit={handleSubmitForm}>
           <div className="form__item">
-            <label htmlFor="" className="form__label">
+            <label htmlFor="" className="form__label label">
               Sort by
             </label>
             <div
-              className={`${isBtnSort ? 'form__button' : 'form__button form__button_disable'}`}
+              className={`${isBtnSort ? 'form__button button' : 'form__button button form__button_disable'}`}
               onClick={handleToggleSortByYear}
             >
               Year
@@ -76,12 +76,12 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
           <div className="form__separator"></div>
 
           <div className="form__item">
-            <label htmlFor="" className="form__label">
+            <label htmlFor="" className="form__label label">
               Full or short movie name
             </label>
             <input
               type="text"
-              className="form__input"
+              className="form__input input-field"
               placeholder="Your text"
               value={request}
               onChange={handleClickEnterRequest}
@@ -110,20 +110,20 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
           </div> */}
 
           <div className="form__item">
-            <label htmlFor="" className="form__label">
+            <label htmlFor="" className="form__label label">
               Years
             </label>
             <div className="form__input_wrapper">
               <input
                 type="text"
-                className="form__input form__input_small"
+                className="form__input input-field form__input_small"
                 placeholder="From"
                 value={yearFrom}
                 onChange={(e) => setYearFrom(e.target.value)}
               />
               <input
                 type="text"
-                className="form__input form__input_small"
+                className="form__input input-field form__input_small"
                 placeholder="To"
                 value={yearTo}
                 onChange={(e) => setYearTo(e.target.value)}
@@ -152,8 +152,8 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
             </select>
           </div> */}
           <div className="form__buttons-group">
-            <div className="form__button">Clear filter</div>
-            <button type="submit" className="form__button form__button_active">
+            <div className="form__button button">Clear filter</div>
+            <button type="submit" className="form__button button button-submit">
               Show results
             </button>
           </div>

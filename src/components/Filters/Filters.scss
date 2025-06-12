@@ -28,16 +28,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 48px;
-
-    @include layout.breakpoint(xs) {
-      margin-bottom: 32px;
-    }
-  }
-
-  &__name {
-    font-size: 24px;
-    font-weight: 600;
   }
 
   &__close {
@@ -46,28 +36,14 @@
 }
 
 .form {
-  & > :not(:last-child) {
-    margin-bottom: 24px;
-  }
-
   &__separator {
     width: 100%;
     height: 1px;
     background-color: #80858b;
   }
 
-  &__label {
-    display: block;
-    margin-bottom: 8px;
-  }
-
   &__input {
-    color: #ffffff;
-    border-radius: 10px;
-    background-color: #323537;
     width: 100%;
-    height: 56px;
-    padding: 16px 20px;
   }
 
   &__input_wrapper {
@@ -99,14 +75,8 @@
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 199px;
-    height: 56px;
     background-color: #323537;
-    border-radius: 10px;
-    cursor: pointer;
+    width: 199px;
 
     @include layout.breakpoint(xs) {
       width: 100%;

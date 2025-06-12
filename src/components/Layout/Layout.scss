@@ -116,3 +116,52 @@ body {
   height: 100%;
   object-fit: fill;
 }
+
+.form {
+  & > :not(:last-child) {
+    margin-bottom: 24px;
+
+    @include breakpoint(xs) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.input-field {
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: #323537;
+  height: 56px;
+  padding: 16px 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-submit {
+  background-color: #7b61ff;
+  color: inherit;
+  font-size: inherit;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 48px;
+
+  @include breakpoint(xs) {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+}
