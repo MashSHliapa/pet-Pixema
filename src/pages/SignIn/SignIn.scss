@@ -35,6 +35,27 @@
     margin-top: 8px;
   }
 
+  .password-input-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .sign-in__input {
+    width: 100%;
+    padding-right: 40px; /* Отступ справа, чтобы кнопка не налезала на текст */
+    box-sizing: border-box;
+  }
+
+  .sign-in__button-show-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
   &__button {
     width: 100%;
     margin: 40px 0 32px;
@@ -54,5 +75,16 @@
 
   &__text span {
     color: #7b61ff;
+  }
+
+  &__error {
+    display: block;
+    color: red;
+    font-size: 12px;
+    margin: 5px 0 0 10px;
+
+    @include layout.breakpoint(sm) {
+      font-size: 12px;
+    }
   }
 }

@@ -42,3 +42,8 @@ export interface DataItemCardResponse {
   error: null | string;
   data: ICardItem;
 }
+
+export interface FormDataType {
+  email: string;
+  password: string;
+}
