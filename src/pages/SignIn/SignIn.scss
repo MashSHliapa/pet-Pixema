@@ -1,6 +1,6 @@
 @use '../../components/Layout/Layout.scss' as layout;
 
-.sign-in {
+.auth-form {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url('../../assets/image/background.png') no-repeat center center/cover;
 
@@ -40,13 +40,13 @@
     width: 100%;
   }
 
-  .sign-in__input {
+  .auth-form__input {
     width: 100%;
     padding-right: 40px; /* Отступ справа, чтобы кнопка не налезала на текст */
     box-sizing: border-box;
   }
 
-  .sign-in__button-show-password {
+  .auth-form__button-show-password {
     position: absolute;
     right: 10px;
     top: 50%;

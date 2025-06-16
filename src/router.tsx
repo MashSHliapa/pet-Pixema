@@ -6,6 +6,7 @@ import { Favorites } from './pages/Favorites/Favorites';
 import { SearchResults } from './pages/SearchResults/SearchResults';
 import { FilteringResults } from './pages/FilteringResults/FilteringResults';
 import { SignIn } from './pages/SignIn/SignIn';
+import { SignUp } from './pages/SignUp/SignUp';
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
       // },
             {
         path: '/',
-        element: <SignIn />,
+        element: <SignUp />,
       },
       {
         path: '/selected/:imdbID',

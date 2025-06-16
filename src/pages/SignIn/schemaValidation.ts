@@ -1,5 +1,11 @@
 import * as Yup from 'yup';
 
+const nameValidation = Yup.string()
+  .required('Обязательное для заполнения поле')
+  .matches(/^(?:[^ ]|$)/, 'Первым символом не может быть пробел')
+  .matches(/^(?:\s*[a-zа-яё]+(?:-[a-zа-яё]+)?(?:\s+[a-zа-яё]+(?:-[a-zа-яё]+)?)?)?$/iu, 'Некорректная запись')
+  .max(30, 'Число символов должно быть не более 30');
+
 const emailValidation = Yup.string()
   .required('Обязательное для заполнения поле')
   .matches(/^\S*$/, 'E-mail не должен содержать пробелов')
@@ -18,4 +24,8 @@ const passwordValidation = Yup.string()
 export const schema = Yup.object().shape({
   email: emailValidation,
   password: passwordValidation,
+  name: nameValidation,
+  repeatPassword: Yup.string()
+    .required('Обязательное для заполнения поле')
+    .oneOf([Yup.ref('password')], 'Пароли не совпадают'),
 });
