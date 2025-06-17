@@ -119,6 +119,7 @@ export function SignUp() {
             </span>
           </p>
         </div>
+        <p className="auth-form__copyright">© All Rights Reserved</p>
       </div>
     </div>
   );

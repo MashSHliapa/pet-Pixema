@@ -1,17 +1,15 @@
 @use '../../components/Layout/Layout.scss' as layout;
 
 .auth-form {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../../assets/image/background.png') no-repeat center center/cover;
-
   &__body {
     background-color: #242426;
     border-radius: 10px;
     max-width: 574px;
-    margin: 0 auto;
+    margin: 54px auto 87px;
     padding: 40px;
 
     @include layout.breakpoint(xs) {
+      margin: 20px auto 48px;
       padding: 24px;
     }
   }
@@ -85,6 +83,15 @@
 
     @include layout.breakpoint(sm) {
       font-size: 12px;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    padding-bottom: 63px;
+
+    @include layout.breakpoint(sm) {
+      padding-bottom: 48px;
     }
   }
 }

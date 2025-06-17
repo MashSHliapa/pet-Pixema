@@ -1,0 +1,9 @@
+.layout-auth {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../../assets/image/background.png') no-repeat center center/cover;
+}
+
+.layout-auth .header__search,
+.layout-auth .header__user {
+  display: none;
+}
