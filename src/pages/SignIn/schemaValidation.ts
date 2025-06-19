@@ -21,11 +21,20 @@ const passwordValidation = Yup.string()
   .matches(/\d/, 'Пароль должен содержать хотя бы одну цифру')
   .matches(/[@$!%*?&]/, 'Пароль должен содержать хотя бы один специальный символ (@$!%*?&)');
 
-export const schema = Yup.object().shape({
+export const signUpSchema = Yup.object().shape({
+  name: nameValidation,
   email: emailValidation,
   password: passwordValidation,
-  name: nameValidation,
   repeatPassword: Yup.string()
     .required('Обязательное для заполнения поле')
     .oneOf([Yup.ref('password')], 'Пароли не совпадают'),
+});
+
+export const emailSchema = Yup.object().shape({
+  email: emailValidation,
+});
+
+export const signInSchema = Yup.object().shape({
+  email: emailValidation,
+  password: passwordValidation,
 });

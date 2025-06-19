@@ -40,7 +40,7 @@
 
   .auth-form__input {
     width: 100%;
-    padding-right: 40px; /* Отступ справа, чтобы кнопка не налезала на текст */
+    padding-right: 40px;
     box-sizing: border-box;
   }
 
@@ -85,13 +85,15 @@
       font-size: 12px;
     }
   }
+}
 
-  &__copyright {
-    text-align: center;
-    padding-bottom: 63px;
-
-    @include layout.breakpoint(sm) {
-      padding-bottom: 48px;
-    }
-  }
+/* Стили для автозаполненного поля */
+.auth-form__input:-webkit-autofill,
+.auth-form__input:-webkit-autofill:hover,
+.auth-form__input:-webkit-autofill:focus,
+.auth-form__input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #323537 inset; /* фон */
+  -webkit-text-fill-color: #ffffff; /* цвет текста */
+  caret-color: #ffffff; /* цвет курсора */
+  transition: background-color 5000s ease-in-out 0s;
 }

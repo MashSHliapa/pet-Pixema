@@ -44,8 +44,8 @@ export interface DataItemCardResponse {
 }
 
 export interface FormDataType {
-  email: string;
-  password: string;
-  name: string;
-  repeatPassword: string;
+  email?: string;
+  password?: string;
+  name?: string;
+  repeatPassword?: string;
 }

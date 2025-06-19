@@ -1,6 +1,24 @@
+@use '../../components/Layout/Layout.scss' as layout;
+
 .layout-auth {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url('../../assets/image/background.png') no-repeat center center/cover;
+
+  &__outlet {
+    flex: 1 1 auto;
+  }
+
+  &__copyright {
+    text-align: center;
+    padding-bottom: 63px;
+
+    @include layout.breakpoint(sm) {
+      padding-bottom: 48px;
+    }
+  }
 }
 
 .layout-auth .header__search,

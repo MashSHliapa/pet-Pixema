@@ -6,7 +6,10 @@ export function LayoutAuth() {
   return (
     <div className="layout-auth">
       <Header />
-      <Outlet />
+      <div className="layout-auth__outlet">
+        <Outlet />
+      </div>
+      <p className="layout-auth__copyright">© All Rights Reserved</p>
     </div>
   );
 }

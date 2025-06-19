@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../SignIn/schemaValidation';
+import { signUpSchema } from '../SignIn/schemaValidation';
 import type { FormDataType } from '../../types/interfaces';
 
 export function SignUp() {
@@ -16,10 +16,10 @@ export function SignUp() {
     handleSubmit,
     reset,
     watch,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
   } = useForm({
     mode: 'onChange',
-    resolver: yupResolver(schema) as Resolver<FormDataType>,
+    resolver: yupResolver(signUpSchema) as Resolver<FormDataType>,
   });
 
   function onSubmit() {
@@ -38,11 +38,14 @@ export function SignUp() {
             autoComplete="off"
           >
             <div className="auth-form__item">
-              <label className="auth-form__label label">Name</label>
+              <label htmlFor="name" className="auth-form__label label">
+                Name
+              </label>
               <input
                 type="text"
-                id="text"
+                id="name"
                 className="auth-form__input"
+                autoComplete="name"
                 placeholder="Your name"
                 {...register('name')}
                 required
@@ -50,11 +53,14 @@ export function SignUp() {
               {errors.name && <span className="auth-form__error">{errors.name.message}</span>}
             </div>
             <div className="auth-form__item">
-              <label className="auth-form__label label">Email</label>
+              <label htmlFor="email-signUp" className="auth-form__label label">
+                Email
+              </label>
               <input
                 type="email"
-                id="email"
+                id="email-signUp"
                 className="auth-form__input"
+                autoComplete="email"
                 placeholder="Your email"
                 {...register('email')}
                 required
@@ -62,11 +68,13 @@ export function SignUp() {
               {errors.email && <span className="auth-form__error">{errors.email.message}</span>}
             </div>
             <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label className="auth-form__label label">Password</label>
+              <label htmlFor="password-signUp" className="auth-form__label label">
+                Password
+              </label>
               <div className="password-input-container">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  id="password"
+                  id="password-signUp"
                   className="auth-form__input"
                   placeholder="Your password"
                   {...register('password')}
@@ -84,11 +92,13 @@ export function SignUp() {
               {errors.password && <span className="auth-form__error">{errors.password.message}</span>}
             </div>
             <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label className="auth-form__label label">Confirm password</label>
+              <label htmlFor="repeatPassword-signUp" className="auth-form__label label">
+                Confirm password
+              </label>
               <div className="password-input-container">
                 <input
                   type={showRepeatPassword ? 'text' : 'password'}
-                  id="repeatPassword"
+                  id="repeatPassword-signUp"
                   className="auth-form__input"
                   placeholder="Confirm password"
                   {...register('repeatPassword', {
@@ -107,8 +117,14 @@ export function SignUp() {
               </div>
               {errors.repeatPassword && <span className="auth-form__error">{errors.repeatPassword.message}</span>}
             </div>
-
-            <button type="submit" className="auth-form__button button button-submit">
+            <button
+              type="submit"
+              className={
+                isValid && isDirty
+                  ? 'auth-form__button button button-submit'
+                  : 'auth-form__button button button-disabled'
+              }
+            >
               Sign up
             </button>
           </form>
@@ -119,7 +135,6 @@ export function SignUp() {
             </span>
           </p>
         </div>
-        <p className="auth-form__copyright">© All Rights Reserved</p>
       </div>
     </div>
   );

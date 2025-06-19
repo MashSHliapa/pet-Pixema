@@ -155,10 +155,15 @@ body {
   font-size: inherit;
 }
 
+.button-disabled {
+  background-color: #7b7b7e;
+  cursor: default;
+}
+
 .title {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 
   @include breakpoint(xs) {
     font-size: 20px;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './schemaValidation';
+import { signInSchema } from './schemaValidation';
 import type { FormDataType } from '../../types/interfaces';
 import './SignIn.scss';
 
@@ -13,10 +13,10 @@ export function SignIn() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
   } = useForm<FormDataType>({
     mode: 'onChange',
-    resolver: yupResolver(schema) as Resolver<FormDataType>,
+    resolver: yupResolver(signInSchema) as Resolver<FormDataType>,
   });
 
   function onSubmit() {
@@ -36,11 +36,14 @@ export function SignIn() {
             autoComplete="off"
           >
             <div className="auth-form__item">
-              <label className="auth-form__label label">Email</label>
+              <label htmlFor="email-signIn" className="auth-form__label label">
+                Email
+              </label>
               <input
                 type="email"
-                id="email"
+                id="email-signIn"
                 className="auth-form__input"
+                autoComplete="email"
                 placeholder="Your email"
                 {...register('email')}
                 required
@@ -48,11 +51,13 @@ export function SignIn() {
               {errors.email && <span className="auth-form__error">{errors.email.message}</span>}
             </div>
             <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label className="auth-form__label label">Password</label>
+              <label htmlFor="password-signIn" className="auth-form__label label">
+                Password
+              </label>
               <div className="password-input-container">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  id="password"
+                  id="password-signIn"
                   className="auth-form__input"
                   placeholder="Your password"
                   {...register('password')}
@@ -72,7 +77,14 @@ export function SignIn() {
                 <a href="#">Forgot password?</a>
               </div>
             </div>
-            <button type="submit" className="auth-form__button button button-submit">
+            <button
+              type="submit"
+              className={
+                isValid && isDirty
+                  ? 'auth-form__button button button-submit'
+                  : 'auth-form__button button button-disabled'
+              }
+            >
               Sign in
             </button>
           </form>
@@ -83,7 +95,6 @@ export function SignIn() {
             </span>
           </p>
         </div>
-        <p className="auth-form__copyright">© All Rights Reserved</p>
       </div>
     </div>
   );
