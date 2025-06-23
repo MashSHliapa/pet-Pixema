@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../SignIn/schemaValidation';
+import { ThemeContext } from '../../components/Context/ThemeContext';
 import type { FormDataType } from '../../types/interfaces';
 
 export function SignUp() {
@@ -10,6 +11,8 @@ export function SignUp() {
 
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   const toggleShowRepeatPassword = () => setShowRepeatPassword((prev) => !prev);
+
+  const { theme } = useContext(ThemeContext);
 
   const {
     register,
@@ -28,7 +31,7 @@ export function SignUp() {
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
-        <div className="auth-form__body">
+        <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
           <h3 className="auth-form__title title">Sign Up</h3>
           <form
             action="#"
@@ -44,7 +47,7 @@ export function SignUp() {
               <input
                 type="text"
                 id="name"
-                className="auth-form__input"
+                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                 autoComplete="name"
                 placeholder="Your name"
                 {...register('name')}
@@ -59,7 +62,7 @@ export function SignUp() {
               <input
                 type="email"
                 id="email-signUp"
-                className="auth-form__input"
+                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                 autoComplete="email"
                 placeholder="Your email"
                 {...register('email')}
@@ -75,7 +78,7 @@ export function SignUp() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password-signUp"
-                  className="auth-form__input"
+                  className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                   placeholder="Your password"
                   {...register('password')}
                   required

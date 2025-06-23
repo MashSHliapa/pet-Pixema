@@ -1,9 +1,13 @@
 import { useForm, type Resolver } from 'react-hook-form';
+import { useContext } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { emailSchema } from '../SignIn/schemaValidation';
+import { ThemeContext } from '../../components/Context/ThemeContext';
 import type { FormDataType } from '../../types/interfaces';
 
 export function ResetPassword() {
+  const { theme } = useContext(ThemeContext);
+
   const {
     // reset,
     // handleSubmit,
@@ -20,7 +24,7 @@ export function ResetPassword() {
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
-        <div className="auth-form__body">
+        <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
           <h3 className="auth-form__title title">Reset password</h3>
           <form action="#" className="auth-form__form form">
             {email && (
@@ -35,7 +39,7 @@ export function ResetPassword() {
               <input
                 type="email"
                 id="email-reset"
-                className="auth-form__input"
+                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                 placeholder="Your email"
                 {...register('email')}
                 required

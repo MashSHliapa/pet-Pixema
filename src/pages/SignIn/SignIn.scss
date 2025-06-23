@@ -2,7 +2,6 @@
 
 .auth-form {
   &__body {
-    background-color: #242426;
     border-radius: 10px;
     max-width: 574px;
     margin: 54px auto 87px;
@@ -15,17 +14,10 @@
   }
 
   &__input {
-    color: #ffffff;
     border-radius: 10px;
-    background-color: #323537;
     width: 100%;
     height: 56px;
     padding: 16px 20px;
-  }
-
-  &__hint,
-  &__text {
-    color: #80858b;
   }
 
   &__hint {
@@ -87,13 +79,45 @@
   }
 }
 
-/* Стили для автозаполненного поля */
-.auth-form__input:-webkit-autofill,
-.auth-form__input:-webkit-autofill:hover,
-.auth-form__input:-webkit-autofill:focus,
-.auth-form__input:-webkit-autofill:active {
+///////////////////// theme
+.dark-theme {
+  background-color: #242426;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #242426;
+}
+
+.input-dark-theme {
+  background-color: #323537;
+  color: #ffffff;
+}
+
+.input-light-theme {
+  background-color: transparent;
+  border: 1px solid #afb2b6;
+  color: #323537;
+}
+
+/* Стили для автозаполненного поля темной темы */
+.input-dark-theme:-webkit-autofill,
+.input-dark-theme:-webkit-autofill:hover,
+.input-dark-theme:-webkit-autofill:focus,
+.input-dark-theme:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px #323537 inset; /* фон */
   -webkit-text-fill-color: #ffffff; /* цвет текста */
   caret-color: #ffffff; /* цвет курсора */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Стили для автозаполненного поля светлой темы */
+.input-light-theme:-webkit-autofill,
+.input-light-theme:-webkit-autofill:hover,
+.input-light-theme:-webkit-autofill:focus,
+.input-light-theme:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset; /* фон */
+  -webkit-text-fill-color: #242426; /* цвет текста */
+  caret-color: #242426; /* цвет курсора */
   transition: background-color 5000s ease-in-out 0s;
 }

@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInSchema } from './schemaValidation';
+import { ThemeContext } from '../../components/Context/ThemeContext';
 import type { FormDataType } from '../../types/interfaces';
 import './SignIn.scss';
 
 export function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
+
+  const { theme } = useContext(ThemeContext);
 
   const {
     register,
@@ -26,7 +29,7 @@ export function SignIn() {
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
-        <div className="auth-form__body">
+        <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
           <h3 className="auth-form__title title">Sign In</h3>
           <form
             action="#"
@@ -42,7 +45,7 @@ export function SignIn() {
               <input
                 type="email"
                 id="email-signIn"
-                className="auth-form__input"
+                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                 autoComplete="email"
                 placeholder="Your email"
                 {...register('email')}
@@ -58,7 +61,7 @@ export function SignIn() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password-signIn"
-                  className="auth-form__input"
+                  className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                   placeholder="Your password"
                   {...register('password')}
                   required
