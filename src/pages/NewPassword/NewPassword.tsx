@@ -1,83 +1,43 @@
 import { useContext, useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from '../SignIn/schemaValidation';
+import { newPasswordSchema } from '../SignIn/schemaValidation';
 import { ThemeContext } from '../../components/Context/ThemeContext';
 import type { FormDataType } from '../../types/interfaces';
 
-export function SignUp() {
+export function NewPassword() {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   const toggleShowRepeatPassword = () => setShowRepeatPassword((prev) => !prev);
 
-  const { theme } = useContext(ThemeContext);
-
   const {
     register,
-    handleSubmit,
-    reset,
     watch,
+    // reset,
     formState: { errors, isValid, isDirty },
   } = useForm({
     mode: 'onChange',
-    resolver: yupResolver(signUpSchema) as Resolver<FormDataType>,
+    resolver: yupResolver(newPasswordSchema) as Resolver<FormDataType>,
   });
 
-  function onSubmit() {
-    reset();
-  }
+  const { theme } = useContext(ThemeContext);
+
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
         <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
-          <h3 className="auth-form__title title">Sign Up</h3>
-          <form
-            action="#"
-            method="POST"
-            className="auth-form__form form"
-            onSubmit={handleSubmit(onSubmit)}
-            autoComplete="off"
-          >
+          <h3 className="auth-form__title title">New password</h3>
+          <form action="#" method="POST" className="auth-form__form form">
             <div className="auth-form__item">
-              <label htmlFor="name" className="auth-form__label label">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
-                autoComplete="name"
-                placeholder="Your name"
-                {...register('name')}
-                required
-              />
-              {errors.name && <span className="auth-form__error">{errors.name.message}</span>}
-            </div>
-            <div className="auth-form__item">
-              <label htmlFor="email-signUp" className="auth-form__label label">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email-signUp"
-                className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
-                autoComplete="email"
-                placeholder="Your email"
-                {...register('email')}
-                required
-              />
-              {errors.email && <span className="auth-form__error">{errors.email.message}</span>}
-            </div>
-            <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label htmlFor="password-signUp" className="auth-form__label label">
+              <label htmlFor="password-newPassword" className="auth-form__label label">
                 Password
               </label>
               <div className="password-input-container">
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  id="password-signUp"
+                  id="password-newPassword"
                   className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                   placeholder="Your password"
                   {...register('password')}
@@ -95,15 +55,15 @@ export function SignUp() {
               {errors.password && <span className="auth-form__error">{errors.password.message}</span>}
             </div>
             <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label htmlFor="repeatPassword-signUp" className="auth-form__label label">
+              <label htmlFor="repeatPassword-newPassword" className="auth-form__label label">
                 Confirm password
               </label>
               <div className="password-input-container">
                 <input
                   type={showRepeatPassword ? 'text' : 'password'}
-                  id="repeatPassword-signUp"
+                  id="repeatPassword-newPassword"
                   className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
-                  placeholder="Confirm password"
+                  placeholder="Confirm your password"
                   {...register('repeatPassword', {
                     required: 'Повторите пароль',
                     validate: (value) => value === watch('password') || 'Пароли не совпадают',
@@ -128,15 +88,9 @@ export function SignUp() {
                   : 'auth-form__button button button-disabled'
               }
             >
-              Sign up
+              Set password
             </button>
           </form>
-          <p className="auth-form__text">
-            Already have an account?{' '}
-            <span>
-              <a href="#">Sign in</a>
-            </span>
-          </p>
         </div>
       </div>
     </div>

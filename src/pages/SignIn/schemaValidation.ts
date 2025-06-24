@@ -38,3 +38,10 @@ export const signInSchema = Yup.object().shape({
   email: emailValidation,
   password: passwordValidation,
 });
+
+export const newPasswordSchema = Yup.object().shape({
+  password: passwordValidation,
+  repeatPassword: Yup.string()
+    .required('Обязательное для заполнения поле')
+    .oneOf([Yup.ref('password')], 'Пароли не совпадают'),
+});
