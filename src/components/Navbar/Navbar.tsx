@@ -44,7 +44,7 @@ export function Navbar() {
             <h3 className="navbar__text">Favorites</h3>
           </NavLink>
 
-          <a href="#" className="navbar__item">
+          <NavLink to="/settings" className="navbar__item">
             <div className="navbar__icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -56,7 +56,7 @@ export function Navbar() {
               </svg>
             </div>
             <h3 className="navbar__text">Settings</h3>
-          </a>
+          </NavLink>
         </ul>
       </div>
     </div>

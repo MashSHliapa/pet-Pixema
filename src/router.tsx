@@ -8,6 +8,7 @@ import { FilteringResults } from './pages/FilteringResults/FilteringResults';
 import { LayoutAuth } from './components/LayoutAuth/LayoutAuth';
 import { SignIn } from './pages/SignIn/SignIn';
 import { SignUp } from './pages/SignUp/SignUp';
+import { Settings } from './pages/Settings/Settings';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: '/favorites',
         element: <Favorites />,
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
       },
       {
         path: '/search/:request',

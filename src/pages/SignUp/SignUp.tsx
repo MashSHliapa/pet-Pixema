@@ -32,7 +32,7 @@ export function SignUp() {
     <div className="auth-form">
       <div className="auth-form__container _container">
         <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
-          <h3 className="auth-form__title title">Sign Up</h3>
+          <h3 className="auth-form__title title title-margin">Sign Up</h3>
           <form
             action="#"
             method="POST"
@@ -41,14 +41,14 @@ export function SignUp() {
             autoComplete="off"
           >
             <div className="auth-form__item">
-              <label htmlFor="name" className="auth-form__label label">
+              <label htmlFor="name-signUp" className="auth-form__label label">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
-                autoComplete="name"
+                autoComplete="name-signUp"
                 placeholder="Your name"
                 {...register('name')}
                 required
@@ -95,13 +95,13 @@ export function SignUp() {
               {errors.password && <span className="auth-form__error">{errors.password.message}</span>}
             </div>
             <div className="auth-form__item auth-form__item_password-input-wrapper">
-              <label htmlFor="repeatPassword-signUp" className="auth-form__label label">
+              <label htmlFor="confirmPassword-signUp" className="auth-form__label label">
                 Confirm password
               </label>
               <div className="password-input-container">
                 <input
                   type={showRepeatPassword ? 'text' : 'password'}
-                  id="repeatPassword-signUp"
+                  id="confirmPassword-signUp"
                   className={theme ? 'auth-form__input input-dark-theme' : 'auth-form__input input-light-theme'}
                   placeholder="Confirm password"
                   {...register('repeatPassword', {

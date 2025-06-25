@@ -151,7 +151,7 @@ body {
 
 .button-submit {
   background-color: #7b61ff;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: inherit;
 }
 
@@ -163,10 +163,135 @@ body {
 .title {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 40px;
 
   @include breakpoint(xs) {
     font-size: 20px;
+  }
+}
+
+.title-margin {
+  margin-bottom: 40px;
+
+  @include breakpoint(xs) {
     margin-bottom: 32px;
+  }
+}
+
+/// для Filters.scss
+.form {
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: #80858b;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+  &__input_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input_small {
+    width: 46%;
+  }
+
+  &__input_select {
+    appearance: none;
+    background-image: url('../../assets/icons/select_sign.svg');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+  }
+
+  &__buttons-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 110px;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+
+  &__button {
+    background-color: #323537;
+    width: 199px;
+
+    @include breakpoint(xs) {
+      width: 100%;
+    }
+  }
+
+  &__button_disable {
+    background-color: #242426;
+    color: #80858b;
+    border: #323537 2px solid;
+  }
+
+  &__button_active {
+    background-color: #7b61ff;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+/// для Filters.scss
+.form {
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__column {
+    flex: 0 1 48%;
+  }
+
+  &__item:first-child {
+    margin-bottom: 20px;
+  }
+
+  &__switch-text span {
+    display: block;
+    color: #afb2b6;
+  }
+
+  &__wrapper {
+    @include breakpoint(sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__wrapper > :not(:last-child) {
+    @include breakpoint(sm) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__theme-wrapper {
+    align-items: center;
+  }
+
+  &__buttons-group-settings {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+
+  &__button-settings {
+    background-color: #323537;
+    width: 47%;
+
+    @include breakpoint(xs) {
+      width: 100%;
+    }
   }
 }

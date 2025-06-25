@@ -40,7 +40,7 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
   return (
     <div className="filters">
       <div className="filters__body">
-        <div className="filters__header">
+        <div className="filters__header title-margin">
           <h3 className="filters__title title">Filters</h3>
           <div className="filters__close" onClick={handleClickCloseFilters}>
             <img src={close} alt="close" />

@@ -28,7 +28,7 @@ export function NewPassword() {
     <div className="auth-form">
       <div className="auth-form__container _container">
         <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
-          <h3 className="auth-form__title title">New password</h3>
+          <h3 className="auth-form__title title title-margin">New password</h3>
           <form action="#" method="POST" className="auth-form__form form">
             <div className="auth-form__item">
               <label htmlFor="password-newPassword" className="auth-form__label label">

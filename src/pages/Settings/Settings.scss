@@ -1,0 +1,26 @@
+@use '../../components/Layout/Layout.scss' as layout;
+
+.settings {
+  &__body {
+    padding: 16px 0 64px;
+
+    @include layout.breakpoint(md) {
+      padding: 8px 0 56px;
+    }
+
+    @include layout.breakpoint(xs) {
+      padding: 5px 0 48px;
+    }
+  }
+}
+
+.fields-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: #242426;
+  padding: 40px;
+
+  @include layout.breakpoint(sm) {
+    padding: 24px;
+  }
+}
