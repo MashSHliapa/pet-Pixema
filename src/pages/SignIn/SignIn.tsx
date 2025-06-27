@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { useForm, type Resolver } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInSchema } from './schemaValidation';
 import { ThemeContext } from '../../components/Context/ThemeContext';
@@ -9,6 +10,7 @@ import './SignIn.scss';
 export function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
+  const navigate = useNavigate();
 
   const { theme } = useContext(ThemeContext);
 
@@ -22,9 +24,31 @@ export function SignIn() {
     resolver: yupResolver(signInSchema) as Resolver<FormDataType>,
   });
 
-  function onSubmit() {
-    reset();
-  }
+  const onSubmit = async (data: FormDataType) => {
+    try {
+      const response = await fetch('http://localhost:3009/signIn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: data.email, password: data.password }),
+      });
+
+      if (!response.ok) {
+        navigate('/auth/sign-up');
+        alert('Необходимо авторизироваться');
+      }
+
+      if (response.ok) {
+        const result = await response.json();
+        // Сохранить токен в localStorage
+        localStorage.setItem('token', result.token);
+        alert('Успешный вход');
+        navigate('/');
+        reset();
+      }
+    } catch (error) {
+      console.error('Ошибка при отправке формы:', error);
+    }
+  };
 
   return (
     <div className="auth-form">

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { Catalog } from './pages/Catalog/Catalog';
 import { ItemCard } from './pages/ItemCard/ItemCard';
 import { Favorites } from './pages/Favorites/Favorites';
@@ -16,27 +17,51 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Catalog />,
+        element: (
+          <ProtectedRoute>
+            <Catalog />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/selected/:imdbID',
-        element: <ItemCard />,
+        element: (
+          <ProtectedRoute>
+            <ItemCard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/favorites',
-        element: <Favorites />,
+        element: (
+          <ProtectedRoute>
+            <Favorites />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/settings',
-        element: <Settings />,
+        element: (
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/search/:request',
-        element: <SearchResults />,
+        element: (
+          <ProtectedRoute>
+            <SearchResults />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/filter/:request',
-        element: <FilteringResults />,
+        element: (
+          <ProtectedRoute>
+            <FilteringResults />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
