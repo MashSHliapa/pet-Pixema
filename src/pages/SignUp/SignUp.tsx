@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, type Resolver } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '../SignIn/schemaValidation';
@@ -8,6 +9,7 @@ import type { FormDataType } from '../../types/interfaces';
 export function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const navigate = useNavigate();
 
   const toggleShowPassword = () => setShowPassword((prev) => !prev);
   const toggleShowRepeatPassword = () => setShowRepeatPassword((prev) => !prev);
@@ -25,9 +27,31 @@ export function SignUp() {
     resolver: yupResolver(signUpSchema) as Resolver<FormDataType>,
   });
 
-  function onSubmit() {
-    reset();
-  }
+  const onSubmit = async (data: FormDataType) => {
+    try {
+      const response = await fetch('http://localhost:3009/signUp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          repeatPassword: data.repeatPassword,
+        }),
+      });
+      if (response.ok) {
+        navigate('/auth/sign-in');
+        alert('Регистрация прошла успешно! Теперь войдите в аккаунт.');
+        reset();
+      } else {
+        const result = await response.json();
+        alert(result.message || 'Ошибка при регистрации');
+      }
+    } catch (error) {
+      console.error('Ошибка при отправке формы:', error);
+    }
+  };
+
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
