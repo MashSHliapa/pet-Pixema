@@ -57,6 +57,24 @@ body {
   background-color: rgb(0, 0, 0);
 }
 
+body {
+  height: 100%;
+  line-height: 1.5;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+body.light-theme {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+body.dark-theme {
+  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+}
+
 @mixin breakpoint($size) {
   @if $size ==lg {
     @media screen and (max-width: 1199.98px) {
@@ -294,4 +312,25 @@ body {
       width: 100%;
     }
   }
+}
+
+.dark-field {
+  background-color: #323537;
+}
+
+.light-field {
+  background-color: #afb2b6;
+}
+
+.dark-field-border {
+  border: #323537 2px solid;
+}
+
+.light-field-input {
+  background-color: inherit;
+}
+
+.light-field-form {
+  background-color: inherit;
+  border: #afb2b6 2px solid;
 }

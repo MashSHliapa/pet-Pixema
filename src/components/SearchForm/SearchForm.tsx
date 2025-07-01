@@ -1,5 +1,6 @@
-import { useState, type ChangeEvent } from 'react';
+import { useContext, useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../Context/ThemeContext';
 import { Filters } from '../Filters/Filters';
 import filter from '../../assets/icons/filter_icon.svg';
 import './SearchForm.scss';
@@ -8,6 +9,7 @@ export function SearchForm() {
   const [request, setRequest] = useState('');
   const [isOpenFilters, setIsOpenFilters] = useState(false);
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
 
   function handleInputRequest(event: ChangeEvent<HTMLInputElement>) {
     setRequest(event.target.value);
@@ -27,10 +29,14 @@ export function SearchForm() {
 
   return (
     <div className="search">
-      <form action="#" className="search__form" onSubmit={handleSubmitForm}>
+      <form
+        action="#"
+        className={theme ? 'search__form dark-field dark-field-border' : 'search__form light-field-form'}
+        onSubmit={handleSubmitForm}
+      >
         <input
           type="text"
-          className="search__input"
+          className={theme ? 'search__input dark-field' : 'search__input light-field-input'}
           placeholder="Search"
           value={request}
           onChange={handleInputRequest}

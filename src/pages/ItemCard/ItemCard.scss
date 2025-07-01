@@ -100,15 +100,22 @@
   }
 }
 
+.actions-border-dark {
+  & > :not(:last-child) {
+    border-right: 1px solid #000000;
+  }
+}
+
+.actions-border-light {
+  & > :not(:last-child) {
+    border-right: 1px solid #ffffff;
+  }
+}
+
 .actions {
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  background-color: #323537;
-
-  & > :not(:last-child) {
-    border-right: 1px solid #000000;
-  }
 
   &__item {
     display: flex;
@@ -131,7 +138,6 @@
     align-items: center;
     gap: 10px;
     border-radius: 6px;
-    background-color: #323537;
     min-height: 28px;
     padding: 2px 8px;
   }
