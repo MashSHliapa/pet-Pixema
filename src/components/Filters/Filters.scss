@@ -1,12 +1,21 @@
 @use '../Layout/Layout.scss' as layout;
 
+.filters-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.6);
+}
+
 .filters {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 100;
   border-radius: 20px;
-  background-color: #242426;
   max-width: 518px;
   height: 100vh;
 

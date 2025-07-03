@@ -17,7 +17,7 @@
 .fields-wrapper {
   display: flex;
   justify-content: space-between;
-  background-color: #242426;
+  border: 1px solid #242426;
   padding: 40px;
 
   @include layout.breakpoint(sm) {

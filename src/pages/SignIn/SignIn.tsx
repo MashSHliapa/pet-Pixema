@@ -53,7 +53,7 @@ export function SignIn() {
   return (
     <div className="auth-form">
       <div className="auth-form__container _container">
-        <div className={theme ? 'auth-form__body dark-theme' : 'auth-form__body light-theme'}>
+        <div className={theme ? 'auth-form__body dark-theme-forms' : 'auth-form__body light-theme'}>
           <h3 className="auth-form__title title title-margin">Sign In</h3>
           <form
             action="#"

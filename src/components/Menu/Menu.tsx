@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Navbar } from '../Navbar/Navbar';
 import open from '../../assets/icons/open.svg';
 import close from '../../assets/icons/close.svg';
 import './Menu.scss';
+import { ThemeContext } from '../Context/ThemeContext';
 
 export function Menu() {
   const [isOpenNavbar, setIsOpenNavbar] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   function handleClickToggleNavbar() {
     setIsOpenNavbar(!isOpenNavbar);
@@ -39,7 +41,7 @@ export function Menu() {
         {isOpenNavbar ? <img src={close} alt="close" /> : <img src={open} alt="close" />}
       </div>
       {isOpenNavbar && (
-        <div className="menu__navbar navbar">
+        <div className={theme ? 'menu__navbar navbar dark-theme' : 'menu__navbar navbar light-theme'}>
           <Navbar />
         </div>
       )}

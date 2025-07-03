@@ -1,4 +1,4 @@
-import { useContext, useState, type ChangeEvent } from 'react';
+import { useContext, useEffect, useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Context/ThemeContext';
 import { Filters } from '../Filters/Filters';
@@ -27,6 +27,14 @@ export function SearchForm() {
     setIsOpenFilters(true);
   }
 
+  useEffect(() => {
+    if (isOpenFilters) {
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = '';
+    }
+  }, [isOpenFilters]);
+
   return (
     <div className="search">
       <form
@@ -45,7 +53,11 @@ export function SearchForm() {
           <img src={filter} alt="filter" />
         </div>
       </form>
-      {isOpenFilters && <Filters setIsOpenFilters={setIsOpenFilters} />}
+      {isOpenFilters && (
+        <div className="filters-modal">
+          <Filters setIsOpenFilters={setIsOpenFilters} />
+        </div>
+      )}
     </div>
   );
 }

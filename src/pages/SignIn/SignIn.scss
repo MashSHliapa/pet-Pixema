@@ -79,27 +79,6 @@
   }
 }
 
-///////////////////// theme
-.dark-theme {
-  background-color: #242426;
-}
-
-.light-theme {
-  background-color: #ffffff;
-  color: #242426;
-}
-
-.input-dark-theme {
-  background-color: #323537;
-  color: #ffffff;
-}
-
-.input-light-theme {
-  background-color: transparent;
-  border: 1px solid #afb2b6;
-  color: #323537;
-}
-
 /* Стили для автозаполненного поля темной темы */
 .input-dark-theme:-webkit-autofill,
 .input-dark-theme:-webkit-autofill:hover,

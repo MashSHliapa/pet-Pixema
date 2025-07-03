@@ -1,5 +1,6 @@
-import { useState, type ChangeEvent } from 'react';
+import { useContext, useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../Context/ThemeContext';
 import close from '../../assets/icons/filter_close.svg';
 import './Filters.scss';
 
@@ -8,6 +9,7 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
   const [isBtnSort, setIsBtnSort] = useState(false);
   const [yearFrom, setYearFrom] = useState('');
   const [yearTo, setYearTo] = useState('');
+  const { theme } = useContext(ThemeContext);
 
   const navigate = useNavigate();
 
@@ -37,8 +39,15 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
     }
   }
 
+  function handleCrearFilter() {
+    setRequest('');
+    setIsBtnSort(false);
+    setYearFrom('');
+    setYearTo('');
+  }
+
   return (
-    <div className="filters">
+    <div className={theme ? 'filters dark-theme-forms' : 'filters light-theme light-field-form'}>
       <div className="filters__body">
         <div className="filters__header title-margin">
           <h3 className="filters__title title">Filters</h3>
@@ -52,7 +61,9 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
               Sort by
             </label>
             <div
-              className={`${isBtnSort ? 'form__button button' : 'form__button button form__button_disable'}`}
+              className={`form__button button
+                        ${isBtnSort ? '' : 'form__button_disable'}
+                        ${theme ? '' : 'light-field'}`}
               onClick={handleToggleSortByYear}
             >
               Year
@@ -81,7 +92,9 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
             </label>
             <input
               type="text"
-              className="form__input input-field"
+              className={
+                theme ? 'form__input input-field input-dark-theme' : 'form__input input-field input-light-theme'
+              }
               placeholder="Your text"
               value={request}
               onChange={handleClickEnterRequest}
@@ -116,14 +129,22 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
             <div className="form__input_wrapper">
               <input
                 type="text"
-                className="form__input input-field form__input_small"
+                className={
+                  theme
+                    ? 'form__input form__input_small input-field input-dark-theme'
+                    : 'form__input form__input_small input-field input-light-theme'
+                }
                 placeholder="From"
                 value={yearFrom}
                 onChange={(e) => setYearFrom(e.target.value)}
               />
               <input
                 type="text"
-                className="form__input input-field form__input_small"
+                className={
+                  theme
+                    ? 'form__input form__input_small input-field input-dark-theme'
+                    : 'form__input form__input_small input-field input-light-theme'
+                }
                 placeholder="To"
                 value={yearTo}
                 onChange={(e) => setYearTo(e.target.value)}
@@ -152,8 +173,16 @@ export function Filters({ setIsOpenFilters }: { setIsOpenFilters: (value: boolea
             </select>
           </div> */}
           <div className="form__buttons-group">
-            <div className="form__button button">Clear filter</div>
-            <button type="submit" className="form__button button button-submit">
+            <div
+              className={theme ? 'form__button button' : 'form__button button light-field'}
+              onClick={handleCrearFilter}
+            >
+              Clear filter
+            </div>
+            <button
+              type="submit"
+              className={theme ? 'form__button button button-submit' : 'form__button button button-submit light-field'}
+            >
               Show results
             </button>
           </div>
